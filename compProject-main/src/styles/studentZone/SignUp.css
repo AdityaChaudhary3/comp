@@ -1,0 +1,82 @@
+/* src/App.css */
+body {
+    background: #f3f3f3;
+    /* text-align: center; */
+  }
+  
+  .App {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 70%;
+    /* text-align: center; */
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px;
+  }
+
+#stateSelect{
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+
+}
+
+#DistrictSelect{
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+
+}
+
+.location{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Persanal{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.button{
+    width: 200px;
+    height: 40px;
+    margin-left: auto;
+    text-align: center;
+    border-radius: 40px;
+    background-color: chartreuse;
+}
+
+.button:hover{
+    background-color: rgb(134, 230, 37,.8);
+}
+  
+  
+  /* Add styling for input fields, labels, buttons, etc. */
+  /* ... */
+
+
+  @media only screen and (max-width: 600px) {
+    .App {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        transition: transform 0.2s;
+        width: 90%;
+        /* text-align: center; */
+        margin: auto;
+        margin-top: 20px;
+        padding: 30px;
+      }
+}
+  

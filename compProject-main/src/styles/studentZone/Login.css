@@ -1,0 +1,79 @@
+.LoginContainer{
+    width: 100%;
+    min-height: 60vh;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.LoginContent{
+    width: 70%;
+    min-height: 50vh;
+    border-radius: 20px;
+    border: 2px solid green;
+    padding: 20px;
+    margin: auto;
+    transition: 1s;
+    box-shadow: 10px 10px 5px 12px lightblue;
+    background-image: linear-gradient(to right,rgb(30, 226, 30,.3), rgb(229, 229, 74,.3),rgb(40, 207, 40,.3));
+}
+
+.LoginContent:hover{
+    width: 73%;
+    background-image: linear-gradient(to right,rgb(30, 226, 30,.4), rgb(229, 229, 74,.4),rgb(40, 207, 40,.4));
+}
+
+.Loginpara{
+    font-size: 1.5rem;
+    color: red;
+}
+
+.Loginpara #label{
+    margin-right: 20px;
+}
+
+.LoginForm{
+    width: 50%;
+    margin: auto;
+    /* border: 1px solid black; */
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .LoginContainer{
+        width: 100%;
+        min-height: 60vh;
+        border: 1px solid black;
+        /* padding: 20px; */
+    }
+
+    .LoginContent{
+        width: 100%;
+        box-shadow: 2px 2px 5px 12px lightblue;
+        /* min-height: 50vh;
+        border-radius: 20px;
+        border: 2px solid green;
+        padding: 20px;
+        margin: auto;
+        transition: 1s;
+        box-shadow: 10px 10px 5px 12px lightblue;
+        background-image: linear-gradient(to right,rgb(30, 226, 30,.3), rgb(229, 229, 74,.3),rgb(40, 207, 40,.3)); */
+    }
+    
+    .LoginContent:hover{
+        width: 95%;
+        background-image: linear-gradient(to right,rgb(30, 226, 30,.4), rgb(229, 229, 74,.4),rgb(40, 207, 40,.4));
+    }
+
+    #DistrictSelect{
+        width: 100%;
+    }
+
+    .LoginForm{
+        width: 100%;
+        margin: auto;
+        /* border: 1px solid black; */
+    }
+}
+  

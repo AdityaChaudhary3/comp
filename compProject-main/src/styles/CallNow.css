@@ -1,0 +1,58 @@
+.CallContainer{
+     width: 100%;
+     /* min-height:35vh ; */
+     /* border: 1px solid black; */
+     background-color: #00008B;
+     text-align: center;
+     color: white;
+     padding-top: 15px;
+     padding-bottom: 15px;
+     /* display: flex;
+     flex-direction: column;
+     align-items: center; */
+}
+
+.InquiryDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.Iitems{
+    width: 50%;
+    height: 100px;
+    margin-left: 20px;
+    /* border: 1px solid black; */
+    background-color: orangered;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .InquiryDiv{
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    
+    }
+    .Iitems{
+        width: 100%;
+        height: 100px;
+        /* margin-left: 10px; */
+        /* border: 1px solid black; */
+        background-color: orangered;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-bottom: 10px;
+    }
+}

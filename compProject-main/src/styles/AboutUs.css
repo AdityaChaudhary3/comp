@@ -1,0 +1,54 @@
+.main{
+    position: relative;
+}
+
+.imgge{
+    width: 100%;
+    height: 60vh;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    border: 1px solid black;
+    background-image: url('../../public/Images/3.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: burlywood;
+    font-weight: 900;
+    position: relative;
+}
+
+.bg-text {
+    
+    color: rgb(183, 199, 42);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 900;
+  }
+
+  .AboutContent{
+     display: flex;
+     padding: 5%;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .AboutContent{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .img4{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
