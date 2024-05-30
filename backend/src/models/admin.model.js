@@ -20,6 +20,10 @@ const adminSchema = new Schema({
         lowecase: true,
         trim: true,
     },
+    role: {
+        type: Number,
+        default: 1,
+      },
 },
 {timestamps: true}
 );

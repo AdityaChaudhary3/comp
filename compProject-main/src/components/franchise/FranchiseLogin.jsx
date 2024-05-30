@@ -53,7 +53,7 @@ const FranchiseLogin = () => {
               <div>
                 <label htmlFor="stateSelect">Email of Institute</label>
               </div>
-              <input type="number" name="" id="DistrictSelect" value={email} 
+              <input type="text" name="" id="DistrictSelect" value={email} 
               onChange={handleEmailChange}/>
             </div>
 

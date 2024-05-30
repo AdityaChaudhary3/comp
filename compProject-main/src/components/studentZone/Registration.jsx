@@ -30,9 +30,50 @@ function Registration() {
     getData();
   },[]);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    axios.post("http://localhost:8000/api/student/student-register", data)
+  // const onSubmit = (data) => {
+  //   console.log(data,"data student");
+  //   axios.post("http://localhost:8000/api/student/student-register", data)
+  //   .then((response) => {
+  //     console.log(response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  
+  // };
+
+
+
+
+
+  const onSubmit = async(data) => {
+    // console.log(data,"formdata");
+    const data1 = new FormData();
+    // data1.append("state", data.state);
+    // data1.append("district", data.district);
+    data1.append("course", data.course);
+    data1.append("franchise", data.franchise);
+    data1.append("name", data.name);
+    data1.append("fatherName", data.fatherName);
+    data1.append("email", data.email);
+    data1.append("motherName", data.motherName);
+    data1.append("lastQualification", data.lastQualification);
+    data1.append("dob", data.dob);
+    data1.append("mobile", data.mobile);
+    data1.append("address", data.address);
+    data1.append("gender", data.gender);
+    data1.append("pin", data.pin);
+    data1.append("city", data.city);
+    data1.append("photo", data.photo[0]);
+    data1.append("password", data.password);
+    data1.append("id_proof", data.id_proof[0]);
+    await axios.post("http://localhost:8000/api/student/student-register", data1,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Accept': '/'
+      }
+    })
     .then((response) => {
       console.log(response);
     })
@@ -81,6 +122,8 @@ function Registration() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h4>*CHOOSE LOCATION</h4>
           <div className="location">
+
+            <div>
             <div>
               <label htmlFor="stateSelect"> State:</label>
               <br />
@@ -90,6 +133,7 @@ function Registration() {
                 <option value="NY">New York</option>
                 {/* Add more state options as needed */}
               </select>
+            </div>
             </div>
 
             <div>
@@ -119,7 +163,7 @@ function Registration() {
                   {/* Add more state options as needed */}
                 </select>
               </div>
-            </div>
+             </div>
           </div>
 
           <h4>*CHOOSE COURSE</h4>

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/MainLinks.css";
 import Marquee from "./Marquee";
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 const MainLinks = () => {
   return (
@@ -41,9 +42,11 @@ const MainLinks = () => {
                 <input type="phone" placeholder="Enter Phone Number" />
                 <input type="email" placeholder="Enter Email"/>
                 <input type="text" placeholder="Enter Adress"/>
-                <div className="button1">
-                <button className="button">Send Now</button>
-                </div>
+                
+                
+                
+                <Button colorScheme='blue'>Button</Button>
+             
 
               </form>
             </div>

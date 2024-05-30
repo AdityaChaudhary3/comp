@@ -52,16 +52,18 @@ const StudentLogin = () => {
               <div>
                 <label htmlFor="stateSelect">Email Id</label>
               </div>
-              <input type="number" name=""  value={email} 
-                onChange={handleEmailChange}/>
+              <input type="email" name=""  value={email} 
+                onChange={handleEmailChange}  id="DistrictSelect"/>
+               
             </div>
 
             <div>
               <div>
-                <label htmlFor="stateSelect">Password</label>
+                <label htmlFor="password">Password</label>
               </div>
               <input type="password" name=""  value={password}
-                onChange={handlePasswordChange}/>
+                onChange={handlePasswordChange}  id="DistrictSelect"/>
+                
             </div>
               <div>
                 <button className="button"> Login</button>

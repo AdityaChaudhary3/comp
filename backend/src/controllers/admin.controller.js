@@ -4,6 +4,8 @@ import {Student} from "../models/student.model.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import {Admin} from "../models/admin.model.js";
 import {Franchise} from "../models/franchise.model.js";
+import { hashPassword ,comparePassword} from "../middlewares/authHelper.js";
+import JWT from "jsonwebtoken";
 
 
 const createAdmin = asyncHandler(async (req, res) => {
@@ -17,17 +19,20 @@ const createAdmin = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Please provide all the required fields")
     }
 
+
+    const hashedPassword = await hashPassword(password);
+
     const admin = await Admin.create({
         name,
         email,
-        password
+        password:hashedPassword
     });
 
-    const admin_new = admin.select("-password");
+    // const admin_new = admin.select("-password");
 
     return res
     .status(200)
-    .json(new ApiResponse(200, admin_new,"Admin created successfully"));
+    .json(new ApiResponse(200, admin,"Admin created successfully"));
 });
 
 
@@ -38,27 +43,40 @@ const loginAdmin = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Please provide all the required fields")
     }
 
-    const admin = await Admin.findOne({email}).select("-password");
+    const admin = await Admin.findOne({email});
 
     if(!admin){
         throw new ApiError(404, "Invalid credentials")
     }
 
-    const isPasswordCorrect = await admin.isPasswordCorrect(password);
+    const match = await comparePassword(password, admin.password);
 
-    if(!isPasswordCorrect){
+    // const isPasswordCorrect = await admin.isPasswordCorrect(password);
+
+    if(!match){
         throw new ApiError(404, "Invalid credentials")
     }
 
-    return res
-    .status(200)
-    .json(new ApiResponse(200, admin,"Admin logged in successfully"));
+
+    //token
+    const token = await JWT.sign({ _id: admin._id }, process.env.JWT_SECRET, {
+        expiresIn: "3d",
+      });
+
+      res.status(200).send({
+        admin: {
+          _id: admin._id,
+          name: admin.name,
+          email: admin.email,
+          role: admin.role,
+        },
+        token,
+      });
 });
 
 
 const getallStudents = asyncHandler(async (req, res) => {
     const students = await Student.find({});
-
     return res
     .status(200)
     .json(new ApiResponse(200,students,"All students fetched successfully"));
@@ -67,7 +85,6 @@ const getallStudents = asyncHandler(async (req, res) => {
 
 const getallFranchises = asyncHandler(async (req, res) => {
     const franchises = await Franchise.find({});
-
     return res
     .status(200)
     .json(new ApiResponse(200,franchises,"All franchises fetched successfully"));
@@ -76,7 +93,6 @@ const getallFranchises = asyncHandler(async (req, res) => {
 
 const getNewFranchiseRequests = asyncHandler(async (req, res) => {
     const franchises = await Franchise.find({isVerified: false});
-
     return res
     .status(200)
     .json(new ApiResponse(200,franchises,"All new franchise requests fetched successfully"));
@@ -125,10 +141,25 @@ const verifyFranchise = asyncHandler(async (req, res) => {
 });
 
 
+const allVerifyfranchise = async(req,res)=>{
+       try{
+           const franchise = await Franchise.find({isVerified:true});
+           if(!franchise){
+            return res.send("franchise not found");
+           }
+
+           res.status(200).send(franchise);
+       }catch(erro){
+         res.send(error)
+       }
+}
+
+
 
 export {
     createAdmin,
     loginAdmin,
+    allVerifyfranchise,
     getallStudents,
     getallFranchises,
     getNewFranchiseRequests,

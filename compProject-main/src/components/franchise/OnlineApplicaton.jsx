@@ -37,10 +37,42 @@ function OnlineApplicaton() {
     formState: { errors },
   } = useForm()
   
+  // const onSubmit = async(data) => {
+  //   console.log(data,"franchise data")
+  //   await axios.post("http://localhost:8000/api/franchise/franchise-register", data)
+  
+  // };
+
+
+
   const onSubmit = async(data) => {
     console.log(data,"franchise data")
-    await axios.post("http://localhost:8000/api/franchise/franchise-register", data)
-  
+    const data1 = new FormData();
+    data1.append("state", data.state);
+    data1.append("district", data.district);
+    data1.append("town", data.town);
+    data1.append("nameOfInstitute", data.nameOfInstitute);
+    data1.append("pin", data.pin);
+    data1.append("postalAdressOfInstitute", data.postalAdressOfInstitute);
+    data1.append("mobileInstitute", data.mobileInstitute);
+    data1.append("emailIdOfInstitute", data.emailIdOfInstitute);
+    data1.append("nameOfCentralHead", data.nameOfCentralHead);
+    data1.append("position", data.position);
+    data1.append("mobileHead", data.mobileHead);
+    data1.append("emailHead", data.emailHead);
+    data1.append("dateofBirth", data.dateofBirth);
+    data1.append("addressofHead", data.addressofHead);
+    data1.append("gender", data.gender);
+    data1.append("password", data.password);
+    data1.append("photo", data.photo[0]);
+    data1.append("id_proof", data.id_proof[0]);
+    data1.append("photoOfInstitute", data.photoOfInstitute[0]);
+    data1.append("voterIdOfHead", data.voterIdOfHead[0]);
+    data1.append("panOfHead", data.panOfHead[0]);
+    data1.append("tradeLicOfInstitute", data.tradeLicOfInstitute[0]);
+    data1.append("photoOfInstituteOffice", data.photoOfInstituteOffice[0]);
+    const data2 = await axios.post("http://localhost:8000/api/franchise/franchise-register", data1)
+    console.log(data2);
   };
 
   return (
@@ -112,6 +144,7 @@ function OnlineApplicaton() {
             <input
               type="text"
               name=""
+              
               id="DistrictSelect"
               placeholder="Enter Name of Institude"
               {...register("nameOfInstitute")}
@@ -282,6 +315,8 @@ function OnlineApplicaton() {
 
 
           <div>
+
+            <div>
             <label htmlFor="stateSelect">Gender*</label>
             <br />
             <select id="DistrictSelect" name="state" {...register("gender")}>
@@ -292,6 +327,7 @@ function OnlineApplicaton() {
              
               {/* Add more state options as needed */}
             </select>
+            </div>
           </div>
 
 

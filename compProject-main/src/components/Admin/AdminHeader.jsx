@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Context/auth";
+const AdminHeader = () => {
 
-const Header = () => {
+  const [auth, setAuth] = useAuth();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    // toast.success("Logout Successfully");
+  };
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -28,6 +39,26 @@ const Header = () => {
                 </Link>
               </li>
 
+              <li class="nav-item">
+                <Link class="nav-link active" aria-current="page" to="/dashboard/admin/student">
+                  students
+                </Link>
+              </li>
+
+              <li class="nav-item">
+                <Link class="nav-link active" aria-current="page" to="/dashboard/admin/admin-register">
+                  Register
+                </Link>
+              </li>
+
+              <li class="nav-item">
+                <Link class="nav-link active" aria-current="page" to="/admin-login">
+                  Login
+                </Link>
+              </li>
+
+
+
               <li class="nav-item dropdown ">
                 <Link
                   class="nav-link dropdown-toggle active"
@@ -37,98 +68,62 @@ const Header = () => {
                   aria-expanded="false"
                   
                 >
-                  ABOUT
+                  course
                 </Link>
                 <ul class="dropdown-menu" /*style={{backgroundColor:'cyan'}}*/ >
                   <li>
-                    <Link class="dropdown-item " to="/about">
-                      ABOUT US
+                    <Link class="dropdown-item " to="/dashboard/admin/getcourse">
+                    get-all-courses
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" to="#">
-                      WHY CHOOSE US
+                    <Link class="dropdown-item" to="/dashboard/admin/createCourse">
+                     create-courses
                     </Link>
                   </li>
-                  <li>
-                    <Link class="dropdown-item" to="#">
-                      AFFLIATION
-                    </Link>
-                  </li>
+
                 </ul>
               </li>
 
+
+
+              <li class="nav-item dropdown ">
+                <Link
+                  class="nav-link dropdown-toggle active"
+                  to="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  
+                >
+                  franchise
+                </Link>
+                <ul class="dropdown-menu" /*style={{backgroundColor:'cyan'}}*/ >
+                  <li>
+                    <Link class="dropdown-item " to="/dashboard/admin/francise">
+                    get-all-franchises
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/dashboard/admin/newFranchise">
+                    get-new-franchise-requests
+                    </Link>
+                  </li>
+
+                </ul>
+              </li>
+              
+                   
 
               <li class="nav-item">
-                <Link class="nav-link active" to="/course">
-                  COURSES
+                <Link class="nav-link active" aria-current="page" to="/admin-login" onClick={handleLogout}>
+                  Logout
                 </Link>
               </li>
 
+    
 
-
-              <li class="nav-item dropdown">
-                <Link
-                  class="nav-link dropdown-toggle active"
-                  to="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  STUDENT ZONE
-                </Link>
-                <ul class="dropdown-menu">
-                  <li>
-                    <Link class="dropdown-item" to="/SignUp">
-                      STUDENT REGISTRATION
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="/SignIn">
-                      STUDENT LOGIN
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="#">
-                      STUDENT VERIFICATION
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-
-
-              <li class="nav-item dropdown">
-                <Link
-                  class="nav-link dropdown-toggle active"
-                  to="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  FRANCHISE
-                </Link>
-                <ul class="dropdown-menu">
-                  <li>
-                    <Link class="dropdown-item" to="/franchiseLogin">
-                    LOGIN
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="/franchiseSignUp">
-                      OINLINE FRANCHISE APPLICATION
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="#">
-                      APPLICATION STATUS
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-
-
+              
             </ul>
           </div>
         </div>
@@ -137,4 +132,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;

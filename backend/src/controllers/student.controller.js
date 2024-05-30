@@ -23,12 +23,12 @@ const createStudent = asyncHandler(async (req, res) => {
         franchise
     } = req.body;
 
-    if(!name || !fatherName || !motherName || !dob || !email || !mobile || !password || gender || !lastQualification || !address || !pin || !city || !course || !franchise){
+    if(!name || !fatherName || !motherName || !dob || !email || !mobile || !password || !gender || !lastQualification || !address || !pin || !city || !course || !franchise){
         throw new ApiError(400, "Please provide all the required fields")
     }
 
-    photoLocalpath = req.files?.photo[0]?.path;
-    id_proofLocalpath = req.files?.id_proof[0]?.path;
+    const photoLocalpath = req.files?.photo[0]?.path;
+    const id_proofLocalpath = req.files?.id_proof[0]?.path;
 
 
     if(!photoLocalpath || !id_proofLocalpath){
@@ -59,8 +59,7 @@ const createStudent = asyncHandler(async (req, res) => {
         franchise,
         photo: photo.url,
         id_proof: id_proof.url,
-    }).select("-password");
-
+    })
 
     return res
     .status(200)

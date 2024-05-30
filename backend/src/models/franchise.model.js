@@ -93,13 +93,13 @@ const franchiseSchema = new Schema({
         lowecase: true,
         trim: true,
     },
-    centreCode: {
-        type: String,
-        // required: true,
-        lowecase: true,
-        unique: true,
-        trim: true,
-    },
+    // centreCode: {
+    //     type: String,
+    //     // required: true,
+    //     lowecase: true,
+    //     unique: true,
+    //     trim: true,
+    // },
     isVerified: {
         type: Boolean,
         default: false
