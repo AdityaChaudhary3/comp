@@ -21,3 +21,5 @@ router.route('/get-unread-messages').get(getUnreadMessages);
 router.route('/get-read-messages').get(getReadMessages);
 
 router.route('/mark-as-read/:id').put(markAsRead);
+
+export default router;

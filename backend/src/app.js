@@ -20,12 +20,14 @@ import adminRouter from "./routes/admin.route.js"
 import courseRouter from "./routes/course.route.js"
 import studentRouter from "./routes/student.route.js"
 import franchiseRouter from "./routes/franchise.route.js"
+import messageRouter from "./routes/message.route.js"
 
 
 app.use("/api/admin", adminRouter);
 app.use("/api/course", courseRouter);
 app.use("/api/student", studentRouter);
 app.use("/api/franchise", franchiseRouter);
+app.use("/api/message", messageRouter);
 
 
 export { app }
