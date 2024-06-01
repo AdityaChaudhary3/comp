@@ -30,6 +30,9 @@ import CreateCourses from './components/Admin/Courses/CreateCourses';
 import CourseUpdate from './components/Admin/Courses/CourseUpdate';
 import AdminRegister from './components/Admin/AdminRegister';
 import GetNewFranchise from './components/Admin/Franchise/GetNewFranchise';
+import GetAllMassage from './components/Admin/massage/GetAllMassage';
+import GetUnreadMassage from './components/Admin/massage/GetUnreadMassage';
+import GetReadMassage from './components/Admin/massage/GetReadMassage';
 
 const app = () => {
   return (
@@ -58,6 +61,9 @@ const app = () => {
               <Route path="admin/couUpdate" element={<CourseUpdate />} />
               <Route path="admin/admin-register" element={<AdminRegister />} />
               <Route path="admin/newFranchise" element={<GetNewFranchise />} />
+              <Route path="admin/Massage" element={<GetAllMassage />} />
+              <Route path="admin/UnreadMassage" element={<GetUnreadMassage />} />
+              <Route path="admin/ReadMassage" element={<GetReadMassage />} />
            </Route>
            
            <Route path="/SignUp" element={<Registration />} />
@@ -66,6 +72,7 @@ const app = () => {
            <Route path="/franchiseLogin" element={<FranchiseLogin />} />
            <Route path="/course" element={<Courses />} />
            <Route path="/couUpdate" element={<CourseUpdate />} />
+
            
            
            

@@ -88,11 +88,11 @@ const Header = () => {
                       STUDENT LOGIN
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link class="dropdown-item" to="#">
                       STUDENT VERIFICATION
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 
@@ -119,11 +119,11 @@ const Header = () => {
                       OINLINE FRANCHISE APPLICATION
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link class="dropdown-item" to="#">
                       APPLICATION STATUS
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 

@@ -120,7 +120,42 @@ const AdminHeader = () => {
                   Logout
                 </Link>
               </li>
+                
 
+
+
+
+              <li class="nav-item dropdown ">
+                <Link
+                  class="nav-link dropdown-toggle active"
+                  to="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  
+                >
+                  massage
+                </Link>
+                <ul class="dropdown-menu" /*style={{backgroundColor:'cyan'}}*/ >
+                  <li>
+                    <Link class="dropdown-item " to="/dashboard/admin/Massage">
+                    get-all-messages
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/dashboard/admin/UnreadMassage">
+                    get-unread-messages
+                    </Link>
+                  </li>
+
+                   <li>
+                    <Link class="dropdown-item" to="/dashboard/admin/ReadMassage">
+                    get-read-messages
+                    </Link>
+                  </li>
+
+                </ul>
+              </li>
     
 
               

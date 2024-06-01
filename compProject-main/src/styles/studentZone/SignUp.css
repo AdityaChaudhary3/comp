@@ -23,6 +23,7 @@ body {
     padding: 10px;
     margin-bottom: 30px;
     border-radius: 10px;
+    border:1px solid black
 
 }
 
@@ -32,6 +33,7 @@ body {
     padding: 10px;
     margin-bottom: 30px;
     border-radius: 10px;
+    border :1px solid black
 
 }
 
@@ -78,5 +80,32 @@ body {
         margin-top: 20px;
         padding: 30px;
       }
+
+
+      #stateSelect{
+        width: 200px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        border:1px solid black
+    
+    }
+
+
+    #DistrictSelect{
+      width: 200px;
+      height: 40px;
+      padding: 10px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      border :1px solid black
+  
+  }
+
+
+  #district{
+    /* width: 100%; */
+  }
 }
   

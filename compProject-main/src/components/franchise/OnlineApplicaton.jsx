@@ -106,18 +106,18 @@ function OnlineApplicaton() {
             </select>
           </div>
 
-          <div>
+          
             <div>
               <label htmlFor="stateSelect"> Distict:</label>
               <br />
-              <select id="DistrictSelect" name="state" {...register("district")}>
+              <select id="DistrictSelect" name="state" {...register("district")} >
                 <option value="">Select a state</option>
                 <option value="CA">California</option>
                 <option value="NY">New York</option>
                 {/* Add more state options as needed */}
               </select>
             </div>
-          </div>
+          
 
           <div>
             <div>
