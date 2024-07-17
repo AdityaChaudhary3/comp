@@ -2,6 +2,8 @@ import { Router } from "express";
 import {
     createStudent,
     loginStudent,
+    editStudent,
+    deleteStudent
 } from "../controllers/student.controller.js";
 import {upload} from  "../middlewares/multer.middleware.js";
 
@@ -16,5 +18,8 @@ router.route("/student-register").post(
 );
         
 router.route("/student-login").post(loginStudent);
+
+router.route("/student-edit/:studentId").put(editStudent);
+router.route("/student-delete/:studentId").delete(deleteStudent);
 
 export default router;
