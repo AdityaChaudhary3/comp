@@ -95,7 +95,86 @@ const loginStudent = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, loginStudent, "Student logged in successfully"));
 });
 
+const editStudent = asyncHandler(async (req, res) => {
+    const {studentId} = req.params;
+    const {
+        name,
+        fatherName,
+        motherName,
+        dob,
+        email,
+        mobile,
+        gender,
+        lastQualification,
+        address,
+        pin,
+        city,
+        course,
+        franchise,
+    } = req.body;
+
+    if(!studentId){
+        throw new ApiError(400, "Please provide studentId")
+    }
+
+    const student = await Student.findById(studentId);
+
+    if(!student){
+        throw new ApiError(404, "Student not found")
+    }
+
+    if(!name || !fatherName || !motherName || !dob || !email || !mobile || !gender || !lastQualification || !address || !pin || !city || !course || !franchise){
+        throw new ApiError(400, "Please provide all the required fields")
+    }
+
+    const updatedStudent = await Student.findByIdAndUpdate(studentId, {
+        $set:{
+        name,
+        fatherName,
+        motherName,
+        dob,
+        email,
+        mobile,
+        gender,
+        lastQualification,
+        address,
+        pin,
+        city,
+        course,
+        franchise,
+        }
+    },{new:true});
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, updatedStudent, "Student updated successfully"));
+
+});
+
+
+const deleteStudent = asyncHandler(async (req, res) => {
+    const {studentId} = req.params;
+
+    if(!studentId){
+        throw new ApiError(400, "Please provide studentId")
+    }
+
+    const student = await Student.findById(studentId);
+
+    if(!student){
+        throw new ApiError(404, "Student not found")
+    }
+
+    await Student.findByIdAndDelete(studentId);
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Student deleted successfully"));
+});
+
 export {
     createStudent,
     loginStudent,
+    editStudent,
+    deleteStudent
 }

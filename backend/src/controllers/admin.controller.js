@@ -76,7 +76,38 @@ const loginAdmin = asyncHandler(async (req, res) => {
 
 
 const getallStudents = asyncHandler(async (req, res) => {
-    const students = await Student.find({});
+    const students = await Student.aggregate([
+        {
+          $lookup: {
+            from: "courses",
+            localField: "course",
+            foreignField: "_id",
+            as: "course_details"
+          }
+        },
+        {
+          $lookup: {
+            from: "franchises",
+            localField: "franchise",
+            foreignField: "_id",
+            as: "franchise_details"
+          }
+        },
+        {
+          $set: {
+            course_details: {
+              $arrayElemAt: ["$course_details.courseName", 0]
+            }
+          }
+        },
+        {
+          $set: {
+            franchise_details: {
+              $arrayElemAt: ["$franchise_details.nameOfInstitute",0]
+            }
+          }
+        }
+      ]);
     return res
     .status(200)
     .json(new ApiResponse(200,students,"All students fetched successfully"));

@@ -25,6 +25,7 @@ import courseRouter from "./routes/course.route.js"
 import studentRouter from "./routes/student.route.js"
 import franchiseRouter from "./routes/franchise.route.js"
 import messageRouter from "./routes/message.route.js"
+import resultRouter from "./routes/result.route.js"
 
 
 app.use("/api/admin", adminRouter);
@@ -32,6 +33,7 @@ app.use("/api/course", courseRouter);
 app.use("/api/student", studentRouter);
 app.use("/api/franchise", franchiseRouter);
 app.use("/api/message", messageRouter);
+app.use("/api/result", resultRouter);
 
 
 export { app }

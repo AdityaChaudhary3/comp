@@ -84,7 +84,7 @@ const studentSchema = new Schema({
     },
     // course details
     course: {
-        type : Schema.Types.ObjectId,
+        type : [ Schema.Types.ObjectId ],
         ref : "Course",
     },
     // franchise details

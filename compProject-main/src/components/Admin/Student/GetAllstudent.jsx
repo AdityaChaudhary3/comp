@@ -3,6 +3,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminHeader from "../AdminHeader";
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+
 import {
     Table,
     Thead,
@@ -44,14 +47,32 @@ const GetAllstudent = () => {
     }
   };
 
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(students);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Buffer to store the generated Excel file
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+
+    saveAs(blob, "exportedData.xlsx");
+  }
+
+
   useEffect(() => {
     findStudents();
   }, []);
 
+
   return (
     <div>
       <AdminHeader/>
-    
+      <div>
+        <Button onClick={exportToExcel} 
+         style={{ cursor: 'pointer', color: 'blue', fontSize: '16px'}}
+        >Excel Export</Button>
+      </div>
       <TableContainer >
         <Table variant="simple">
           <TableCaption>Imperial to metric conversion factors</TableCaption>
@@ -63,9 +84,9 @@ const GetAllstudent = () => {
               <Th>dob</Th>
               <Th>Adress</Th>
               <Th>gender</Th>
-              <Th>Course Id</Th>
+              <Th>Course </Th>
               <Th>Mobile </Th>
-              <Th>franchise ID</Th>
+              <Th>franchise </Th>
               <Th>city</Th>
               <Th>address</Th>
               <Th>LastQualification</Th>
@@ -89,9 +110,9 @@ const GetAllstudent = () => {
                       <Td>{item.dob}</Td>
                       <Td>{item.address}</Td>
                       <Td>{item.gender}</Td>
-                      <Td>{item.course}</Td>
+                      <Td>{item.course_details}</Td>
                       <Td>{item.mobile}</Td>
-                      <Td>{item.franchise}</Td>
+                      <Td>{item.franchise_details}</Td>
                       <Td>{item.city}</Td>
                       <Td>{item.address}</Td>
                       <Td>{item.lastQualification}</Td>
